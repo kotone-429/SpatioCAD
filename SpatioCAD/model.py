@@ -422,7 +422,7 @@ class SpatioCAD:
             if issparse(cluster_data):
                 non_zero_counts = cluster_data.getnnz(axis=1)
                 sums = cluster_data.sum(axis=1).A1
-                means = np.where(non_zero_counts > 0, sums / non_zero_counts, 0)
+                means = np.divide(sums, non_zero_counts, out=np.zeros_like(sums), where=non_zero_counts>0)
             else:
                 non_zero_counts = np.count_nonzero(cluster_data, axis=1)
                 means = np.true_divide(cluster_data.sum(axis=1), non_zero_counts, where=non_zero_counts>0)

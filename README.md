@@ -45,8 +45,8 @@ scad.compute_adjacency_matrix()
 scad.filter_non_pattern_genes()
 
 # Identify spatially variable genes (SVGs)
-final_df = scad.compute_SVG(power_values = [1,1.5,2], num_eigen= 50, cutoff_error= 15.0)
-final_df.to_csv('svg_result.csv')
+svg_df = scad.compute_SVG(power_values = [1,1.5,2], num_eigen= 50, cutoff_error= 15.0)
+svg_df.to_csv('svg_result.csv')
 
 # Cluster the SVGs
 scad.cluster_gene(n_top_genes = 2000)
